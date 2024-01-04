@@ -4,6 +4,8 @@ const router = require("./routes/book-routes");
 const cors = require("cors");
 const app = express();
 
+const PORT = process.env.REACT_APP_PORT;
+
 // Middlewares
 app.use(express.json());
 app.use(cors());

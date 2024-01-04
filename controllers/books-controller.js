@@ -2,6 +2,7 @@ const Book = require("../model/Book");
 
 const getAllBooks = async (req, res, next) => {
   let books;
+
   try {
     books = await Book.find();
   } catch (err) {
@@ -11,6 +12,7 @@ const getAllBooks = async (req, res, next) => {
   if (!books) {
     return res.status(404).json({ message: "No products found" });
   }
+
   return res.status(200).json({ books });
 };
 
@@ -38,7 +40,7 @@ const addBook = async (req, res, next) => {
       description,
       price,
       available,
-      image,
+      image
     });
     await book.save();
   } catch (err) {
@@ -48,6 +50,7 @@ const addBook = async (req, res, next) => {
   if (!book) {
     return res.status(500).json({ message: "Unable To Add" });
   }
+
   return res.status(201).json({ book });
 };
 
@@ -68,9 +71,11 @@ const updateBook = async (req, res, next) => {
   } catch (err) {
     console.log(err);
   }
+  
   if (!book) {
     return res.status(404).json({ message: "Unable To Update By this ID" });
   }
+
   return res.status(200).json({ book });
 };
 
